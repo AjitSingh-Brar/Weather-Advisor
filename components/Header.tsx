@@ -9,9 +9,8 @@ function Header() {
         <Logo />
 
         <div className="flex-1 flex items-center justify-end space-x-4">
-
-            <DarkModeToggle />
-            <UserInput />
+          <DarkModeToggle />
+          <UserInput />
         </div>
       </nav>
     </header>

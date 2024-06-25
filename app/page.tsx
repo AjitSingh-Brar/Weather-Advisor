@@ -6,9 +6,9 @@ export default function Home() {
   let formattedDate = moment(date).format("LLLL");
   return (
     <main className="">
-      <div className="relative isolate pt-14 dark:bg-gray-950">
+      <div className="relative isolate pt-10 dark:bg-gray-950">
         <div
-          className="absolute inset-x-0 bottom-0 -z-10 transform-gpu overflow-hidden blur-[64px]"
+          className="absolute inset-x-0 bottom-[-150px] -z-10 transform-gpu overflow-hidden blur-[64px]"
           aria-hidden="true"
         >
           <div
@@ -20,10 +20,10 @@ export default function Home() {
           />
         </div>
 
-        <div className="py-12 sm:py-20 lg:pb-40">
+        <div className="py-16 lg:pb-30">
           <div className="mx-auto max-w-7xl px-6 lg:px-8 flex items-center justify-center">
             <div className="mx-4 max-w-2xl text-center">
-              <h1 className="txt-4xl font-bold tracking-tight sm:text-6xl">
+              <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
                 Toronto
               </h1>
             </div>
@@ -31,12 +31,11 @@ export default function Home() {
               <img
                 src={`https://flagcdn.com/48x36/ca.png`}
                 alt="country flag"
-                width={40}
-                height={40}
+                className="w-5 h-5 md:w-10 md:h-8"
               />
             </div>
           </div>
-          <div className="text-center py-4">
+          <div className="text-center py-4 text-sm sm:text-md">
             <h3>Weather Forcast for {formattedDate}</h3>
           </div>
         </div>
