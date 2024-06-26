@@ -4,6 +4,9 @@ import "./globals.css";
 import Header from "@/components/Header";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import InfoTab from "@/components/InfoTab";
+// import { store } from "../store";
+import { Provider } from "react-redux";
+import StoreProvider from "./StoreProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,16 +23,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        {/* <Provider store={store}> */}
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
-          {children}
-          <InfoTab />
+          <StoreProvider>
+            <Header />
+            {children}
+            <InfoTab />
+          </StoreProvider>
         </ThemeProvider>
+        {/* </Provider> */}
       </body>
     </html>
   );
