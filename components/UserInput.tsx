@@ -1,34 +1,49 @@
-import { Input } from "./ui/input"
+"use client";
+import { useState } from "react";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
+import { useDispatch } from "react-redux";
+import { getCityWeatherDetails } from "@/utils/checkWeather";
+import { useToast } from "@/components/ui/use-toast";
 
 function UserInput() {
-  
+  const [city, setCity] = useState("");
+  const dispatch = useDispatch();
+  const { toast } = useToast();
+  const API_KEY = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
+
+  const checkWeather = (e: any) => {
+    e.preventDefault();
+    if (city === undefined || city === "") {
+      toast({
+        title: "Error",
+        description: (
+          <div>
+            <h3 className="text-red-600 font-medium">
+              Please enter a city to search.
+            </h3>
+          </div>
+        ),
+      });
+    } else {
+      getCityWeatherDetails(city, API_KEY, dispatch);
+    }
+  };
+
   return (
-    <div className="relative w-full max-w-xs">
-      <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-500" />
-      <Input type="search" placeholder="Search for a city..." className="pl-10 border rounded-full" />
+    <div className="w-full max-w-xs flex">
+      <Input
+        type="search"
+        placeholder="Search for a city..."
+        className="pl-5 border rounded-full mx-1 cursor-pointer"
+        value={city}
+        onChange={(e) => setCity(e.target.value)}
+      />
+      <Button type="submit" onClick={checkWeather}>
+        Search
+      </Button>
     </div>
-  )
+  );
 }
 
-
-export default UserInput
-
-function SearchIcon(props: any) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="11" cy="11" r="8" />
-      <path d="m21 21-4.3-4.3" />
-    </svg>
-  )
-}
+export default UserInput;

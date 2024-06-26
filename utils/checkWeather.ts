@@ -1,3 +1,4 @@
+
 import { storeInfo } from "@/lib/store/features/weather/weatherSlice";
 
 export const getCityWeatherDetails = async (cityName: string, API_KEY: string | undefined, dispatch: any) => {

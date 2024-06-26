@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { storeInfo } from "@/lib/store/features/weather/weatherSlice";
 import type { RootState } from "@/lib/store/store";
 import moment from "moment";
 import { getCityWeatherDetails } from "@/utils/checkWeather";
@@ -20,27 +19,6 @@ export default function Home() {
   useEffect(() => {
     getCityWeatherDetails(cityName, API_KEY, dispatch);
   }, []);
-
-  // const getCityWeatherDetails = async () => {
-  //   const URL = "https://api.openweathermap.org/data/2.5/weather";
-  //   const FULL_URL = `${URL}?q=${cityName}&appid=${API_KEY}&units=imperial`;
-
-  //   try {
-  //     const response = await fetch(FULL_URL);
-  //     const data = await response.json();
-  //     const dataInfo = {
-  //       city: data.name,
-  //       countryCode: data.sys.country,
-  //       temperature: data.main.temp,
-  //       humidity: data.main.humidity,
-  //       windSpeed: data.wind.speed,
-  //     };
-  //     dispatch(storeInfo(dataInfo));
-  //     console.log(dataInfo);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   return (
     <main className="">
