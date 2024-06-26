@@ -16,7 +16,6 @@ export const getCityWeatherDetails = async (cityName: string, API_KEY: string | 
         windSpeed: data.wind.speed,
       };
       dispatch(storeInfo(dataInfo));
-      console.log(dataInfo);
     } catch (error) {
       console.log(error);
     }

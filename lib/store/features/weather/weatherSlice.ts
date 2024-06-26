@@ -9,8 +9,8 @@ export interface WeatherState {
 }
 
 const initialState: WeatherState = {
-  city: "Toronto",
-  countryCode: "CA",
+  city: "",
+  countryCode: "",
   temperature: 0,
   humidity: 0,
   windSpeed: 0,
