@@ -5,6 +5,8 @@
   The <a href="https://weather-advisor.vercel.app/" target="_blank">weather-advisor.vercel.app</a> built with <a href="https://nextjs.org/" target="_blank">Next.js</a>, a React Framework and hosted with <a href="https://vercel.com/" target="_blank">Vercel</a>
 </p>
 
+<p align="center">This application allows the user to enter/select a city and display it's current weather report in Celsius.</p>
+
 ![demo](https://github.com/AjitSingh-Brar/Weather-Advisor/blob/main/images/demo.PNG)
 
 ## 🛠 Installation & Set Up
