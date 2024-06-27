@@ -1,10 +1,8 @@
 "use client";
 
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import type { RootState } from "@/lib/store/store";
 import moment from "moment";
-import { getCityWeatherDetails } from "@/utils/checkWeather";
 import InfoTab from "@/components/InfoTab";
 import Banner from "@/components/Banner";
 
@@ -13,14 +11,10 @@ export default function Home() {
   const countryCode = useSelector(
     (state: RootState) => state.weather.countryCode
   ).toLowerCase();
-  const dispatch = useDispatch();
+  const error = useSelector((state: RootState) => state.weather.error);
 
   const date = new Date();
   const formattedDate = moment(date).format("LLLL");
-  const API_KEY = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
-  useEffect(() => {
-    getCityWeatherDetails(cityName, API_KEY, dispatch);
-  }, []);
 
   return (
     <main>

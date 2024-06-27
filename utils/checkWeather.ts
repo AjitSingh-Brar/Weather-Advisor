@@ -1,9 +1,9 @@
 
-import { storeInfo } from "@/lib/store/features/weather/weatherSlice";
+import { storeError, storeInfo } from "@/lib/store/features/weather/weatherSlice";
 
-export const getCityWeatherDetails = async (cityName: string, API_KEY: string | undefined, dispatch: any) => {
+export const getCityWeatherDetails = async (cityName: string, countryCode: string, API_KEY: string | undefined, dispatch: any) => {
     const URL = "https://api.openweathermap.org/data/2.5/weather";
-    const FULL_URL = `${URL}?q=${cityName}&appid=${API_KEY}&units=imperial`;
+    const FULL_URL = `${URL}?q=${cityName},${countryCode}&appid=${API_KEY}`;
 
     try {
       const response = await fetch(FULL_URL);
@@ -17,6 +17,6 @@ export const getCityWeatherDetails = async (cityName: string, API_KEY: string | 
       };
       dispatch(storeInfo(dataInfo));
     } catch (error) {
-      console.log(error);
+      dispatch(storeError(error));
     }
   };

@@ -6,6 +6,7 @@ export interface WeatherState {
   temperature: number;
   humidity: number;
   windSpeed: number;
+  error: any;
 }
 
 const initialState: WeatherState = {
@@ -14,6 +15,7 @@ const initialState: WeatherState = {
   temperature: 0,
   humidity: 0,
   windSpeed: 0,
+  error: null,
 };
 
 export const weatherSlice = createSlice({
@@ -27,10 +29,13 @@ export const weatherSlice = createSlice({
       state.humidity = action.payload.humidity;
       state.windSpeed = action.payload.windSpeed;
     },
+    storeError: (state, action) => {
+      state.error = action.payload.error;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { storeInfo } = weatherSlice.actions;
+export const { storeInfo, storeError } = weatherSlice.actions;
 
 export default weatherSlice.reducer;
